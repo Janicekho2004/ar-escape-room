@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test AR #1</title>
+
+  <!-- A-Frame: a web framework that makes 3D graphics easy with simple tags like <a-box> or <a-plane>. -->
+  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+
+  <!-- AR.js: adds Augmented Reality (AR) functions to A-Frame.
+  Together: A-Frame draws the 3D stuff, and AR.js tells it where to put it when your camera sees a marker. -->
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+
+  <!--Page Style: Removes page margins and scrollbars, so your camera video fills the whole screen.-->
+  <style>body{margin:0;overflow:hidden}</style> 
+</head>
+
+<body>
+  <!--<a-scene> = the 3D world container.
+  arjs="..." = turns on AR.js features-->
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+
+    <!-- <a-assets> = a place to preload files (images, videos, 3D models) before they’re used. -->
+    <a-assets>
+      <img id="dashboard" src="./capture.jpg">
+    </a-assets>
+
+    <!-- <a-marker> = AR.js object that “listens” for a marker. 
+      Anything inside <a-marker> ... </a-marker> will appear on top of the marker when it’s detected.-->
+    <a-marker type="pattern" url="./pattern-hiro.patt">
+      <!-- <a-plane> = a flat rectangle (like a piece of paper). -->
+      <a-plane position="0 0.01 0" rotation="-90 0 0"
+               width="3" height="2"
+               material="shader: flat; src: #dashboard"></a-plane>
+    </a-marker>
+
+    <!-- Adds a camera so you can “see” the 3D/AR scene. -->
+    <a-entity camera></a-entity>
+
+  </a-scene>
+
+</body>
+
+</html>
+
+
+
+<!--Questions
+1. what if show multiple markers at once
+2. in MRGE
+3. how to customise ar marker (AR.js marker generator)-->
