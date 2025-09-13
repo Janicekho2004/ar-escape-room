@@ -1,60 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <meta charset="utf-8" />
-  <title>AR – Two Markers</title>
+  <title>Test AR #1</title>
+
+  <!-- A-Frame: a web framework that makes 3D graphics easy with simple tags like <a-box> or <a-plane>. -->
   <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+
+  <!-- AR.js: adds Augmented Reality (AR) functions to A-Frame.
+  Together: A-Frame draws the 3D stuff, and AR.js tells it where to put it when your camera sees a marker. -->
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
-  <style>body{margin:0;overflow:hidden}</style>
+
+  <!--Page Style: Removes page margins and scrollbars, so your camera video fills the whole screen.-->
+  <style>body{margin:0;overflow:hidden}</style> 
 </head>
+
 <body>
+  <!--<a-scene> = the 3D world container.
+  arjs="..." = turns on AR.js features-->
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 
-    
-
-    <!-- Add this once in <a-scene> (assets) -->
-  <a-assets>
-    <a-asset-item id="dejavuFont" src="https://cdn.aframe.io/fonts/DejaVu-sdf.fnt"></a-asset-item>
-    <img id="dejavuTex" src="https://cdn.aframe.io/fonts/DejaVu-sdf.png">
-  </a-assets>
-
-  <!-- Marker B: your custom pattern -> riddle card -->
-  <a-marker type="pattern" url="pattern-hiro.patt">
-    <a-entity rotation="-90 0 0" scale="0.6 0.6 0.6">
+    <!-- <a-marker> = AR.js object that “listens” for a marker. 
+      Anything inside <a-marker> ... </a-marker> will appear on top of the marker when it’s detected.-->
+    <a-marker type="pattern" url="./pattern-hiro.patt">
       <a-plane position="0 0.010 0" width="1.2" height="0.7"
-              material="shader: flat; color: #1F2937"></a-plane>
+             material="shader: flat; color: #1F2937"></a-plane>
+    </a-marker>
 
-      <a-text value="RIDDLE" align="center" width="1.1"
-              position="0 0.030 0.001" color="#F59E0B" side="double"></a-text>
+    <!-- Adds a camera so you can “see” the 3D/AR scene. -->
+    <a-entity camera></a-entity>
 
-      <a-text value="I have keys but no locks,\nI have space but no rooms.\nYou can enter, but you can't go outside.\nWhat am I?"
-              align="center" width="1.1" wrap-count="28"
-              position="0 -0.150 0.002" color="#E5E7EB" side="double"></a-text>
+  </a-scene>
 
-      <a-text id="hint" value="Hint: A keyboard 😉" visible="false"
-              align="center" width="1.1" position="0 -0.320 0.003"
-              color="#93C5FD" side="double"></a-text>
-
-      <a-box id="hintButton" position="0 -0.410 0.004"
-            width="0.6" height="0.18" depth="0.02" color="#2563EB"></a-box>
-      <a-text value="Show Hint" align="center" width="1"
-              position="0 -0.410 0.006" color="#FFFFFF" side="double"></a-text>
-    </a-entity>
-  </a-marker>
-
-
-
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const btn = document.getElementById('hintButton');
-      const hint = document.getElementById('hint');
-      if (btn && hint) {
-        btn.addEventListener('click', () => {
-          const v = hint.getAttribute('visible');
-          hint.setAttribute('visible', !(v === true || v === 'true'));
-        });
-      }
-    });
-  </script>
 </body>
+
 </html>
+
+
+
+<!--Questions
+1. what if show multiple markers at once
+2. in MRGE
+3. how to customise ar marker (AR.js marker generator)-->
