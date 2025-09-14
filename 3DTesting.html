@@ -23,12 +23,22 @@
             scale="0.01 0.01 0.01"
             position="0 0 0"
             rotation="-90 0 0"
-            animation="property: rotation; to: -90 360 0; loop: true; dur: 5000; easing: linear">
+            animation="property: rotation; to: -90 360 0; loop: true; dur: 5000; easing: linear"
+            sound="src: url(apple.mp3); autoplay: true; loop: true; volume: 1"> 
         </a-entity>
     </a-marker>
 
 
-    <a-entity camera></a-entity>
+    <a-entity camera>
+        <a-cursor></a-cursor>
+    </a-entity>
+
+    <script>
+        document.querySelector('#appleModel').addEventListener('click', function () {
+            this.components.sound.playSound();
+        });
+    </script>
+
 
   </a-scene>
 
