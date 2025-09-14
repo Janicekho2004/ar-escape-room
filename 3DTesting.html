@@ -35,10 +35,15 @@
     </a-entity>
 
     <script>
-        document.querySelector('#appleModel').addEventListener('click', function () {
-            this.components.sound.playSound();
-        });
-    </script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const apple = document.querySelector('#appleModel');
+      apple.addEventListener('click', function () {
+        if (this.components.sound) {
+          this.components.sound.playSound();
+        }
+      });
+    });
+  </script>
 
 
   </a-scene>
