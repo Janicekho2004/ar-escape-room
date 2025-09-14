@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>Test AR #1</title>
+  <title>Test 3D Model #1</title>
 
   <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
@@ -18,13 +18,15 @@
     </a-assets>
 
     <a-marker type="pattern" url="./pattern-hiro.patt">
-       <a-entity 
-        gltf-model="#myModel"
-        scale="0.01 0.01 0.01" 
-        position="0 0 0"
-        rotation="-90 0 0" >
-      </a-entity>
+        <a-entity 
+            gltf-model="#myModel"
+            scale="0.01 0.01 0.01"
+            position="0 0 0"
+            rotation="-90 0 0"
+            animation="property: rotation; to: -90 360 0; loop: true; dur: 5000; easing: linear">
+        </a-entity>
     </a-marker>
+
 
     <a-entity camera></a-entity>
 
