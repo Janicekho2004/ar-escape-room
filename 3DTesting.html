@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Test AR #1</title>
+
+  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js/aframe/build/aframe-ar.js"></script>
+
+  <style>body{margin:0;overflow:hidden}</style> 
+</head>
+
+<body>
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+
+    <a-assets>
+      <a-asset-item id="myModel" src="./apple.glb"></a-asset-item>
+    </a-assets>
+
+    <a-marker type="pattern" url="./pattern-hiro.patt">
+       <a-entity 
+        gltf-model="#myModel"
+        scale="0.01 0.01 0.01" 
+        position="0 0 0"
+        rotation="-90 0 0" >
+      </a-entity>
+    </a-marker>
+
+    <a-entity camera></a-entity>
+
+  </a-scene>
+
+</body>
+
+</html>
+
+
+<!--https://sketchfab.com/-->
+
+
